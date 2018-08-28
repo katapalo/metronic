@@ -1,27 +1,24 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { AmChart,AmChartsService } from '@amcharts/amcharts3-angular';
+import { SelectItem,Fieldset } from 'primeng/primeng';
+import { DatosService } from '@app-services/datos.service';
 //import { ScriptLoaderService } from '@app-services/script-loader.service';
 
-import { SelectItem,Fieldset } from 'primeng/primeng';
-
-
-
-import { DatosService } from '@app-services/datos.service';
-
-class Filtro_old {
-    datos: SelectItem[];
-    values: string [];
-}
+interface totalesJson {
+    cantidad_articulos:number;
+    imp_total:number
+};
 
 class Filtro {
-    datos: any;
-    values: any;
+    datos: SelectItem[];
+    values: string [];
     constructor(){
-      this.datos = [];
-      this.values = [];
+        this.values = [];
     }
 }
+
 
 @Component({
     selector: 'app-index',
@@ -47,6 +44,10 @@ export class IndexComponent implements OnInit,AfterViewInit
     filtro4: Filtro;
     filtro5: Filtro;
 
+    totales:totalesJson[] = [{cantidad_articulos:0,imp_total:0}];
+    fecha1:Date;
+    fecha2:Date;
+    dateLocale:any;
 
     @ViewChild('filtros') filtros: Fieldset;
   
@@ -64,45 +65,19 @@ export class IndexComponent implements OnInit,AfterViewInit
           "value":"2018-04-30"
         }           
       ];  
-      dropdownList = [];
-      selectedItems = [];
-      dropdownSettings = {};
-      datos=[];
-      values=[];
-    ngOnInit() {
-
-        
-        this.dropdownList = [
-            {"id":1,"itemName":"India"},
-            {"id":2,"itemName":"Singapore"},
-            {"id":3,"itemName":"Australia"},
-            {"id":4,"itemName":"Canada"},
-            {"id":5,"itemName":"South Korea"},
-            {"id":6,"itemName":"Germany"},
-            {"id":7,"itemName":"France"},
-            {"id":8,"itemName":"Russia"},
-            {"id":9,"itemName":"Italy"},
-            {"id":10,"itemName":"Sweden"}
-          ];
-this.selectedItems = [
-              {"id":2,"itemName":"Singapore"},
-              {"id":3,"itemName":"Australia"},
-              {"id":4,"itemName":"Canada"},
-              {"id":5,"itemName":"South Korea"}
-          ];
-this.dropdownSettings = { 
-                singleSelection: false, 
-                text:"Select Countries",
-                selectAllText:'Select All',
-                unSelectAllText:'UnSelect All',
-                enableSearchFilter: true,
-                classes:"myclass custom-class",
-                labelKey: "value",
-                primaryKey: "label"
-              };    
-        this.datos = [
-            {"label":1,"value":"India"}
-        ];
+      
+    ngOnInit() {       
+        this.filtros.collapsed = true; 
+        this.dateLocale = {
+            firstDayOfWeek: 1,
+            dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+            dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+            dayNamesMin: [ "D","L","M","X","J","V","S" ],
+            monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+            monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
+            today: 'Hoy',
+            clear: 'Borrar'
+        };
 
         this.chartTopVentas = this.AmCharts.makeChart("chartdiv1",this.getConfig1());
         this.chartCompras = this.AmCharts.makeChart("chartdiv2", this.getConfig2() );
@@ -117,8 +92,7 @@ this.dropdownSettings = {
         this.filtro5 = new Filtro();
 
         this.datosService.getDatos(6,"").subscribe(data => {             
-            this.filtro1.datos = data.json();     
-            debugger;                      
+            this.filtro1.datos = data.json();                                   
         });
         
         this.datosService.getDatos(7,"").subscribe(data => {             
@@ -134,6 +108,9 @@ this.dropdownSettings = {
             this.filtro5.datos = data.json();            
         });
         
+        this.datosService.getDatos(11,this.param3).subscribe(data => {             
+            this.totales = data.json();                                 
+        });
         
     }
 
@@ -276,55 +253,62 @@ this.dropdownSettings = {
     {
         var filtros: any[] = [this.filtro1.values,this.filtro2.values,this.filtro3.values,
             this.filtro4.values,this.filtro5.values];
-       debugger;
+       
         this.filtros.collapsed = true;
-            
+        
+        let pru = this.fecha1.toDateString();
+        let pru1 = this.fecha1.getDate();
+        let pru2 = this.fecha1.toISOString();
         let param = [
             {
-              "label":"fecha_inicio",
-              "value":"2018-04-20"
-            },
-            {
-              "label":"fecha_fin",
-              "value":"2018-04-30"
-            }           
+                "label":"fecha_inicio",
+                "value":this.fecha1.toISOString()
+              },
+              {
+                "label":"fecha_fin",
+                "value":this.fecha2.toISOString();
+              }            
           ]; 
-         if(this.filtro1.values && this.filtro1.values.length > 0)
+          debugger;
+         if(this.filtro1.values.length > 0)
          {
             param.push({
                 "label":"des_marca_articulo",
-                "value":this.filtro1.values.value.toString()
+                "value":this.filtro1.values.toString()
             }); 
          }
-         debugger;
-         if(this.filtro2.values && this.filtro2.values.length > 0)
+         
+         if(this.filtro2.values.length > 0)
          {
             param.push({
                 "label":"des_tipo_articulo",
                 "value":this.filtro2.values.toString()
             });     
          }
-         if(this.filtro3.values && this.filtro3.values.length > 0)
+         if(this.filtro3.values.length > 0)
          {
             param.push({
                 "label":"des_perfil_neumtatico",
                 "value":this.filtro3.values.toString()
             });     
          }
-         if(this.filtro4.values && this.filtro4.values.length > 0)
+         if(this.filtro4.values.length > 0)
          {
             param.push({
                 "label":"des_radio_neumatico",
                 "value":this.filtro4.values.toString()
             });     
          }
-         if(this.filtro5.values && this.filtro5.values.length > 0)
+         if(this.filtro5.values.length > 0)
          {
             param.push({
                 "label":"des_ancho_neumatico",
                 "value":this.filtro5.values.toString()
             });     
          }
+         this.datosService.getDatos(11,param).subscribe(data => {             
+            this.totales = data.json();                        
+        });
         this.refreshDataCharts(param);
                 
     }

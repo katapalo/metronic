@@ -6,14 +6,20 @@ import {
     ToolbarModule,
     ButtonModule,
     SplitButtonModule,
-    MultiSelectModule
+    MultiSelectModule,
+    CalendarModule,
+    FieldsetModule,
+    TreeModule,
 } from 'primeng/primeng';
 
 @NgModule({
   imports: [
     ToolbarModule,
     AngularMultiSelectModule,
-    MultiSelectModule
+    MultiSelectModule,
+    CalendarModule,
+    FieldsetModule,
+    TreeModule
   ],
   exports:[
     CommonModule,
@@ -21,7 +27,10 @@ import {
     ToolbarModule,
     ButtonModule,
     SplitButtonModule,
-    MultiSelectModule
+    MultiSelectModule,
+    CalendarModule,
+    FieldsetModule,
+    TreeModule
     ],
   declarations: []
 })

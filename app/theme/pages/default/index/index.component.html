@@ -1,19 +1,31 @@
 <div class="m-content">
 	<div class="row">
 		<div class="col-lg-12">
-			<p-fieldset #filtros legend="Filtros de datos" [toggleable]="true">				
-				<!--<angular2-multiselect id="uno" [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings"></angular2-multiselect>
-				  <angular2-multiselect id="dos" [data]="datos" [(ngModel)]="values" [settings]="dropdownSettings"></angular2-multiselect> -->
-				<label for="name">Marcas neumaticos</label>
-				<angular2-multiselect id="uno" [data]="filtro1.datos" [(ngModel)]="filtro1.values" [settings]="dropdownSettings"></angular2-multiselect> 
-				<label for="name">Marcas neumaticos</label>
-				<angular2-multiselect [data]="filtro2.datos" [(ngModel)]="filtro2.values" [settings]="dropdownSettings"></angular2-multiselect> 
-				<label for="name">Marcas neumaticos</label>
-				<angular2-multiselect [data]="filtro3.datos" [(ngModel)]="filtro3.values" [settings]="dropdownSettings"></angular2-multiselect> 
-				<label for="name">Marcas neumaticos</label>
-				<angular2-multiselect [data]="filtro4.datos" [(ngModel)]="filtro4.values" [settings]="dropdownSettings"></angular2-multiselect> 
-				<label for="name">Marcas neumaticos</label>
-				<angular2-multiselect [data]="filtro5.datos" [(ngModel)]="filtro5.values" [settings]="dropdownSettings"></angular2-multiselect> 
+			<p-fieldset #filtros legend="Filtros de datos" [toggleable]="true">	
+				<div class="ui-g ui-fluid">
+					<div class="ui-g-12 ui-md-2">
+						<label>Fecha inicio</label><br/>
+						<p-calendar [(ngModel)]="fecha1" [locale]="dateLocale" dateFormat="dd/mm/yy"></p-calendar>
+					</div>
+					<div class="ui-g-12 ui-md-2">									
+						<label>Fecha fin</label><br/>											
+						<p-calendar [(ngModel)]="fecha2" [locale]="dateLocale" dateFormat="dd/mm/yy"></p-calendar><br/>											
+					</div>
+					<div class="ui-g-12 ui-md-8"></div>	
+					<div class="ui-g-12 ui-md-12">
+						<label>Marcas neumaticos</label><br/>
+						<p-multiSelect [options]="filtro1.datos" [(ngModel)]="filtro1.values" [style]="{'width':'60%'}"></p-multiSelect><br/>	
+						<label for="name">Tipo</label><br/>
+						<p-multiSelect [options]="filtro2.datos" [(ngModel)]="filtro2.values" [style]="{'width':'60%'}"></p-multiSelect><br/>
+						<label for="name">Perfil</label><br/>
+						<p-multiSelect [options]="filtro3.datos" [(ngModel)]="filtro3.values" [style]="{'width':'60%'}"></p-multiSelect><br/> 
+						<label for="name">Radio</label><br/>
+						<p-multiSelect [options]="filtro4.datos" [(ngModel)]="filtro4.values" [style]="{'width':'60%'}"></p-multiSelect><br/> 
+						<label for="name">Ancho</label><br/>
+						<p-multiSelect [options]="filtro5.datos" [(ngModel)]="filtro5.values" [style]="{'width':'60%'}"></p-multiSelect> 						
+					</div>								
+				</div>
+				
 				<div class="row">
 					<div class="col-lg-4"></div>					
 					<div class="col-lg-4"><br/><button pButton type="button" (click)="onFiltros()" icon="pi pi-check" label="Aplicar filtros"></button></div>
@@ -28,9 +40,9 @@
 				<div class="m-portlet__body">
 					<!-- CONTENIDO DEL PANEL -->
 					<span class="m-widget1__number m--font-brand">
-						<h2>+$17,800</h2>
+						<h2>{{totales[0].cantidad_articulos | number }} neumaticos</h2>
 					</span>
-					Cantidad Neumaticos
+					Total neumaticos
 				</div>
 			</div>
 		</div>
@@ -40,37 +52,12 @@
 				<div class="m-portlet__body">
 					<!-- CONTENIDO DEL PANEL -->
 					<span class="m-widget1__number m--font-danger">
-						<h2>+$800</h2>
+						<h2>{{totales[0].imp_total | number}} €</h2>
 					</span>
-					Compra €
+					Total Compra €
 				</div>
 			</div>
 		</div>
-
-		<div class="col-lg-3">
-			<div class="m-portlet m-portlet--tab">
-				<div class="m-portlet__body">
-					<!-- CONTENIDO DEL PANEL -->
-					<span class="m-widget1__number m--font-success">
-						<h2>{{ n }}</h2>
-					</span>
-					cosas blablablabla
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-3">
-			<div class="m-portlet m-portlet--tab">
-				<div class="m-portlet__body">
-					<!-- CONTENIDO DEL PANEL -->
-					<span class="m-widget1__number m--font-brand">
-						<h2>+$99999</h2>
-					</span>
-					cosas blablablabla
-				</div>
-			</div>
-		</div>
-
 	</div>
 	<br/>
 

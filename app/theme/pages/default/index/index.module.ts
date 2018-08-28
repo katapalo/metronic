@@ -10,29 +10,6 @@ import { AmChartsModule  } from '@amcharts/amcharts3-angular';
 
 import {SharedModule} from '@app-modules/shared.module';
 
-import {
-	AccordionModule,
-	ButtonModule,
-	CheckboxModule,
-	ChipsModule,
-	CodeHighlighterModule,
-	ColorPickerModule,
-	InputMaskModule,
-	FieldsetModule,
-	GrowlModule,
-	InputTextModule,
-	MultiSelectModule,
-	PanelModule,
-	RadioButtonModule,
-	SelectButtonModule,
-	SplitButtonModule,
-    TabViewModule,
-    ToolbarModule
-} from 'primeng/primeng';
-
-
-//import {TreeModule} from 'primeng/tree';
-
 const routes: Routes = [
     {
         'path': '',
@@ -51,13 +28,7 @@ const routes: Routes = [
     imports: [
         CommonModule, RouterModule.forChild(routes), LayoutModule,FormsModule
         ,SharedModule
-        ,AmChartsModule                   
-        //prime modules
-        ,MultiSelectModule
-        ,FieldsetModule   
-        ,ButtonModule
-        ,SplitButtonModule
-        ,ToolbarModule
+        ,AmChartsModule                          
     ], exports: [
         RouterModule
     ], providers: [             
