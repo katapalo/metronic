@@ -255,10 +255,7 @@ export class IndexComponent implements OnInit,AfterViewInit
             this.filtro4.values,this.filtro5.values];
        
         this.filtros.collapsed = true;
-        
-        let pru = this.fecha1.toDateString();
-        let pru1 = this.fecha1.getDate();
-        let pru2 = this.fecha1.toISOString();
+                
         let param = [
             {
                 "label":"fecha_inicio",
@@ -268,8 +265,7 @@ export class IndexComponent implements OnInit,AfterViewInit
                 "label":"fecha_fin",
                 "value":this.fecha2.toISOString()
               }            
-          ]; 
-          debugger;
+          ];     
          if(this.filtro1.values.length > 0)
          {
             param.push({
