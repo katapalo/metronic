@@ -266,7 +266,7 @@ export class IndexComponent implements OnInit,AfterViewInit
               },
               {
                 "label":"fecha_fin",
-                "value":this.fecha2.toISOString();
+                "value":this.fecha2.toISOString()
               }            
           ]; 
           debugger;
