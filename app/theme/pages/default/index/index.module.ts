@@ -8,6 +8,7 @@ import { DefaultComponent } from '../default.component';
 import { IndexComponent } from './index.component';
 import { AmChartsModule  } from '@amcharts/amcharts3-angular';
 
+import {SharedModule} from '@app-modules/shared.module';
 
 import {
 	AccordionModule,
@@ -49,6 +50,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule, RouterModule.forChild(routes), LayoutModule,FormsModule
+        ,SharedModule
         ,AmChartsModule                   
         //prime modules
         ,MultiSelectModule

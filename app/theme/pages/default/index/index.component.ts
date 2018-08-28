@@ -9,9 +9,18 @@ import { SelectItem,Fieldset } from 'primeng/primeng';
 
 import { DatosService } from '@app-services/datos.service';
 
-class Filtro {
+class Filtro_old {
     datos: SelectItem[];
     values: string [];
+}
+
+class Filtro {
+    datos: any;
+    values: any;
+    constructor(){
+      this.datos = [];
+      this.values = [];
+    }
 }
 
 @Component({
@@ -39,16 +48,9 @@ export class IndexComponent implements OnInit,AfterViewInit
     filtro5: Filtro;
 
 
-    
-
-
-
     @ViewChild('filtros') filtros: Fieldset;
   
-    title="el tittulo";
 
-    marcas: SelectItem[];
-    selectedMarcas: string[] = [];
 
     constructor(private AmCharts: AmChartsService, private datosService: DatosService) { }
 
@@ -62,36 +64,61 @@ export class IndexComponent implements OnInit,AfterViewInit
           "value":"2018-04-30"
         }           
       ];  
-
+      dropdownList = [];
+      selectedItems = [];
+      dropdownSettings = {};
+      datos=[];
+      values=[];
     ngOnInit() {
-        this.marcas = [
-            {label: 'Audi', value: 'Audi'},
-            {label: 'BMW', value: 'BMW'},
-            {label: 'Fiat', value: 'Fiat'},
-            {label: 'Ford', value: 'Ford'},
-            {label: 'Honda', value: 'Honda'},
-            {label: 'Jaguar', value: 'Jaguar'},
-            {label: 'Mercedes', value: 'Mercedes'},
-            {label: 'Renault', value: 'Renault'},
-            {label: 'VW', value: 'VW'},
-            {label: 'Volvo', value: 'Volvo'}
-        ];
-      
-       
+
         
+        this.dropdownList = [
+            {"id":1,"itemName":"India"},
+            {"id":2,"itemName":"Singapore"},
+            {"id":3,"itemName":"Australia"},
+            {"id":4,"itemName":"Canada"},
+            {"id":5,"itemName":"South Korea"},
+            {"id":6,"itemName":"Germany"},
+            {"id":7,"itemName":"France"},
+            {"id":8,"itemName":"Russia"},
+            {"id":9,"itemName":"Italy"},
+            {"id":10,"itemName":"Sweden"}
+          ];
+this.selectedItems = [
+              {"id":2,"itemName":"Singapore"},
+              {"id":3,"itemName":"Australia"},
+              {"id":4,"itemName":"Canada"},
+              {"id":5,"itemName":"South Korea"}
+          ];
+this.dropdownSettings = { 
+                singleSelection: false, 
+                text:"Select Countries",
+                selectAllText:'Select All',
+                unSelectAllText:'UnSelect All',
+                enableSearchFilter: true,
+                classes:"myclass custom-class",
+                labelKey: "value",
+                primaryKey: "label"
+              };    
+        this.datos = [
+            {"label":1,"value":"India"}
+        ];
+
         this.chartTopVentas = this.AmCharts.makeChart("chartdiv1",this.getConfig1());
         this.chartCompras = this.AmCharts.makeChart("chartdiv2", this.getConfig2() );
         this.chartMixMarcas = this.AmCharts.makeChart("chartdiv3",this.getConfig3());
 
-        this.refreshData(this.param3);
+        this.refreshDataCharts(this.param3);
         //datos filtros
         this.filtro1 = new Filtro();
         this.filtro2 = new Filtro();
         this.filtro3 = new Filtro();
         this.filtro4 = new Filtro();
         this.filtro5 = new Filtro();
+
         this.datosService.getDatos(6,"").subscribe(data => {             
-            this.filtro1.datos = data.json();                           
+            this.filtro1.datos = data.json();     
+            debugger;                      
         });
         
         this.datosService.getDatos(7,"").subscribe(data => {             
@@ -113,7 +140,7 @@ export class IndexComponent implements OnInit,AfterViewInit
     ngAfterViewInit() {
     }
 
-    refreshData(param)
+    refreshDataCharts(param)
     {
         this.datosService.getDatos(4,param).subscribe(data => {             
             this.chartTopVentas.dataProvider = data.json();
@@ -249,12 +276,9 @@ export class IndexComponent implements OnInit,AfterViewInit
     {
         var filtros: any[] = [this.filtro1.values,this.filtro2.values,this.filtro3.values,
             this.filtro4.values,this.filtro5.values];
-       // this.filtro1.datos.values[1]
+       debugger;
         this.filtros.collapsed = true;
-    
-        // this.datosService.getDatosFiltrados(filtros).subscribe(data => {             
-        //     var dato = data.json();          
-        // });
+            
         let param = [
             {
               "label":"fecha_inicio",
@@ -269,9 +293,10 @@ export class IndexComponent implements OnInit,AfterViewInit
          {
             param.push({
                 "label":"des_marca_articulo",
-                "value":this.filtro1.values.toString()
+                "value":this.filtro1.values.value.toString()
             }); 
          }
+         debugger;
          if(this.filtro2.values && this.filtro2.values.length > 0)
          {
             param.push({
@@ -300,7 +325,7 @@ export class IndexComponent implements OnInit,AfterViewInit
                 "value":this.filtro5.values.toString()
             });     
          }
-        this.refreshData(param);
+        this.refreshDataCharts(param);
                 
     }
 }
