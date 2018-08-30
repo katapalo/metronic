@@ -8,7 +8,8 @@ import { DefaultComponent } from '../default.component';
 import { IndexComponent } from './index.component';
 import { AmChartsModule  } from '@amcharts/amcharts3-angular';
 
-import {SharedModule} from '@app-modules/shared.module';
+import {SharedModule} from '@app-modules/shared/shared.module';
+
 
 const routes: Routes = [
     {
@@ -17,8 +18,8 @@ const routes: Routes = [
         'children': [
             {
                 'path': '',
-                'component': IndexComponent,
-            },
+                'component': IndexComponent
+            }            
         ],
     },
 ];
@@ -28,7 +29,7 @@ const routes: Routes = [
     imports: [
         CommonModule, RouterModule.forChild(routes), LayoutModule,FormsModule
         ,SharedModule
-        ,AmChartsModule                          
+        ,AmChartsModule   ,                       
     ], exports: [
         RouterModule
     ], providers: [             

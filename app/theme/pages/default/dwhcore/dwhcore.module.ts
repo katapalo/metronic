@@ -1,17 +1,19 @@
 import {NgModule} from '@angular/core';
-import {SharedModule} from '@app-modules/shared.module';
+import {SharedModule} from '@app-modules/shared/shared.module';
 import {Routes, RouterModule} from '@angular/router';
 import {LayoutModule} from '../../../layouts/layout.module';
 import {DefaultComponent} from '../default.component';
+import {DefaultcoreComponent} from './defaultcore.component';
 import {DwhcoreComponent} from './dwhcore.component';
 import {EtlComponent} from '@app-components/dwhcore/etl/etl.component';
 import {StateComponent} from '@app-components/dwhcore/state/state.component';
 
 
+
 const routes: Routes = [
   {
     'path': '',
-    'component': DefaultComponent,
+    'component': DefaultcoreComponent,
     'children': [
       {
         'path': '',
@@ -36,6 +38,7 @@ const routes: Routes = [
   ], exports: [
     RouterModule,
   ], declarations: [
+    DefaultcoreComponent,
     DwhcoreComponent,
     EtlComponent,
     StateComponent,    
