@@ -18,6 +18,11 @@ const routes: Routes = [
                 'loadChildren': './pages/default/dwhcore/dwhcore.module#DwhcoreModule',
             },
             {
+                'path': 'prueba',
+                'loadChildren': './pages/default/components/portlets-tools/portlets-tools.module#PortletsToolsModule',
+                // "loadChildren": ".\/pages\/default\/components\/portlets-tools\/portlets-tools.module#PortletsToolsModule"
+            },
+            {
                 'path': '',
                 'redirectTo': 'index',
                 'pathMatch': 'full',

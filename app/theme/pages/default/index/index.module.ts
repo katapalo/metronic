@@ -38,4 +38,7 @@ const routes: Routes = [
     ],
 })
 export class IndexModule {
+    constructor(){
+        debugger;
+    }
 }

@@ -53,7 +53,9 @@ export class IndexComponent implements OnInit,AfterViewInit
   
 
 
-    constructor(private AmCharts: AmChartsService, private datosService: DatosService) { }
+    constructor(private AmCharts: AmChartsService, private datosService: DatosService) { 
+        debugger;
+    }
 
     param3 = [
         {

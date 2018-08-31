@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,AfterViewInit } from '@angular/core';
 import { Helpers } from '../../../../helpers';
 import { ScriptLoaderService } from '@app-services/script-loader.service';
 
@@ -8,14 +8,12 @@ import { ScriptLoaderService } from '@app-services/script-loader.service';
     templateUrl: "./defaultcore.component.html",
     encapsulation: ViewEncapsulation.None,
     styleUrls: [
-         '../../../../../../node_modules/primeng/resources/primeng.css',
+        '../../../../../../node_modules/primeng/resources/primeng.css',
         '../../../../../../node_modules/primeng/resources/themes/nova-light/theme.css',
-        '../../../../../../node_modules/primeicons/primeicons.css',
-        '../../../../../../node_modules/quill/dist/quill.core.css',
-        '../../../../../../node_modules/quill/dist/quill.snow.css'
+        '../../../../../../node_modules/primeicons/primeicons.css'
     ]
 })
-export class DefaultcoreComponent implements OnInit {
+export class DefaultcoreComponent implements OnInit,AfterViewInit {
 
 
     constructor(private _script: ScriptLoaderService) {
@@ -28,5 +26,6 @@ export class DefaultcoreComponent implements OnInit {
         //         // optional js to be loaded once
         //     });
     }
-
+    ngAfterViewInit(){        
+      }
 }

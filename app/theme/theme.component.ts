@@ -28,6 +28,7 @@ export class ThemeComponent implements OnInit {
                 Helpers.setLoading(false);
                 // optional js to be loaded once
                 this._script.loadScripts('head', ['assets/vendors/custom/fullcalendar/fullcalendar.bundle.js'], true);
+                // this._script.loadScripts('head', ['assets/demo/default/custom/components/portlets/tools.js'],true);
             });
         this._router.events.subscribe((route) => {
             if (route instanceof NavigationStart) {
@@ -41,6 +42,7 @@ export class ThemeComponent implements OnInit {
             if (route instanceof NavigationEnd) {
                 // init required js
                 (<any>mApp).init();
+                debugger;
                 (<any>mUtil).init();
                 Helpers.setLoading(false);
                 // content m-wrapper animation

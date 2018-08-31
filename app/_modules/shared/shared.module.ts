@@ -2,6 +2,7 @@ import {NgModule,OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {SharedComponent} from './shared.component';
+
 //import {AngularMultiSelectModule, AngularMultiSelect } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
  
@@ -19,7 +20,7 @@ import {
 
 @NgModule({
   imports: [  
-    // CommonModule,  
+     CommonModule,  
     // FormsModule,
     // ToolbarModule,
     // AngularMultiSelectModule,
@@ -49,7 +50,6 @@ import {
 })
 export class SharedModule implements OnInit {
   constructor(){
-    
   }
   ngOnInit(){
     
