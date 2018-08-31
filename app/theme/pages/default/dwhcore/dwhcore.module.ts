@@ -9,7 +9,7 @@ import {DefaultcoreComponent} from './defaultcore.component';
 import {DwhcoreComponent} from './dwhcore.component';
 import {EtlComponent} from '@app-components/dwhcore/etl/etl.component';
 import {StateComponent} from '@app-components/dwhcore/state/state.component';
-import { PortletsToolsComponent } from '@app/theme/pages/default/components/portlets-tools/portlets-tools.component';
+
 
 
 
