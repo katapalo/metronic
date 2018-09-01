@@ -5,7 +5,7 @@ import {SharedComponent} from './shared.component';
 
 //import {AngularMultiSelectModule, AngularMultiSelect } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
- 
+ import {ToastModule} from 'primeng/toast';
 import {
     ToolbarModule,
     ButtonModule,
@@ -14,13 +14,15 @@ import {
     CalendarModule,
     FieldsetModule,
     TreeModule,
-    EditorModule
+    EditorModule,
+    OrganizationChartModule,
+    MessageService
 } from 'primeng/primeng';
 
 
 @NgModule({
   imports: [  
-     CommonModule,  
+     CommonModule
     // FormsModule,
     // ToolbarModule,
     // AngularMultiSelectModule,
@@ -42,8 +44,13 @@ import {
     CalendarModule,
     FieldsetModule,
     TreeModule,
-    EditorModule
+    EditorModule,
+    OrganizationChartModule,
+    ToastModule
     ],
+  providers:[
+    MessageService
+  ],
   declarations: [
     SharedComponent
   ]

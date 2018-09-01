@@ -1,0 +1,47 @@
+{
+    "data":
+    [
+        {
+            "label": "LOAD_TH_ALBARANRES.kjb",
+             "expanded":true,
+            "children": [{
+                    "label": "precarga",
+                    "data": "Work Folder",
+                    "expanded":true,
+                    "children": [
+                        {
+                            "label": "precarga-2", "data": "Expenses Document","expanded":true,
+                            "children":[
+                                {
+                                    "label": "cambio_divisa",
+                                    "data": "Work Folder",
+                                    "expanded":true,
+                                    "children":[
+                                        {
+                                            "label": "prevision_venta",
+                                            "data": "Work Folder",
+                                            "expanded":true,
+                                            "children":[
+                                                {
+                                                    "label": "area_canales",
+                                                    "data": "Work Folder",
+                                                    "expanded":true,
+                                                    "children":[
+                                                        {
+                                                            "label": "ventas_sap",
+                                                            "data": "Work Folder",
+                                                            "expanded":true,
+                                                            "children":[{
+                                                                "label": "borrado",
+                                                                "data": "Work Folder",
+                                                                "expanded":true
+                                                            }]
+                                                        }]       
+                                                }]
+                                        }]
+                                }]
+                        }]
+                }]
+        }
+    ]
+}

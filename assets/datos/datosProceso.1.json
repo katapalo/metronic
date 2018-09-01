@@ -1,0 +1,55 @@
+{
+    "data":
+    [
+        {
+            "label": "LOAD_TH_ALBARANRES.kjb",
+            "data": "Documents Folder",
+            "expandedIcon": "fa fa-folder-open",
+            "collapsedIcon": "fa fa-folder",
+            "children": [{
+                    "label": "precarga",
+                    "data": "Work Folder",
+                    "expandedIcon": "fa fa-folder-open",
+                    "collapsedIcon": "fa fa-folder",
+                    "children": [
+                        {
+                            "label": "precarga-2", "icon": "fa fa-file-word-o", "data": "Expenses Document",
+                            "children":[
+                                {
+                                    "label": "cambio_divisa",
+                                    "data": "Work Folder",
+                                    "expandedIcon": "fa fa-folder-open",
+                                    "collapsedIcon": "fa fa-folder",
+                                    "children":[
+                                        {
+                                            "label": "prevision_venta",
+                                            "data": "Work Folder",
+                                            "expandedIcon": "fa fa-folder-open",
+                                            "collapsedIcon": "fa fa-folder",
+                                            "children":[
+                                                {
+                                                    "label": "area_canales",
+                                                    "data": "Work Folder",
+                                                    "expandedIcon": "fa fa-folder-open",
+                                                    "collapsedIcon": "fa fa-folder",
+                                                    "children":[
+                                                        {
+                                                            "label": "ventas_sap",
+                                                            "data": "Work Folder",
+                                                            "expandedIcon": "fa fa-folder-open",
+                                                            "collapsedIcon": "fa fa-folder",
+                                                            "children":[{
+                                                                "label": "borrado",
+                                                                "data": "Work Folder",
+                                                                "expandedIcon": "fa fa-folder-open",
+                                                                "collapsedIcon": "fa fa-folder"
+                                                            }]
+                                                        }]       
+                                                }]
+                                        }]
+                                }]
+                        }]
+                }]
+        }
+    ]
+}

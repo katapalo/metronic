@@ -1,7 +1,10 @@
-import { Component,ViewEncapsulation,AfterViewInit } from '@angular/core';
+import { Component,ViewEncapsulation,OnInit,AfterViewInit } from '@angular/core';
 import { ScriptLoaderService } from '@app-services/script-loader.service';
-//import { DatosService } from '@app-services/datos.service';
+import { DatosService } from '@app-services/datos.service';
 import {EditorModule} from 'primeng/editor';
+import {TreeNode} from 'primeng/api';
+import { isProceduralRenderer } from '@angular/core/src/render3/interfaces/renderer';
+import {MessageService} from 'primeng/primeng';
 
 declare function portletInitJS(id:any);
 
@@ -22,12 +25,20 @@ declare function portletInitJS(id:any);
     `]
 })
 
-export class EtlComponent implements AfterViewInit
+export class EtlComponent implements OnInit,AfterViewInit
 {     
-   textoEditor:string;
-    constructor(private _script: ScriptLoaderService) {         
+    selectedFile3: TreeNode;
+    filesTree1: TreeNode[];
+    textoEditor:string;
+    constructor(private _script: ScriptLoaderService,private datosService: DatosService,private messageService: MessageService) {         
     }    
-
+    ngOnInit(){
+        this.datosService.getDatosTreeProceso().then(files =>{
+            this.filesTree1 = files;
+            debugger;
+        });
+    }
+    
     ngAfterViewInit(){
         // this._script.loadScripts('body', ['assets/demo/default/custom/components/portlets/tools.js']);
         // this._script.loadScripts('app-widgets-bootstrap-markdown',
@@ -49,4 +60,9 @@ export class EtlComponent implements AfterViewInit
         portletInitJS("m_portlet_tools_1");
         portletInitJS("m_portlet_tools_2");
     }
+    onNodeSelect(event) {
+        this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
+        debugger;
+    }
+
 }
