@@ -30,11 +30,23 @@ export class EtlComponent implements OnInit,AfterViewInit
     selectedFile3: TreeNode;
     filesTree1: TreeNode[];
     textoEditor:string;
+    nameStep:string;
+
     constructor(private _script: ScriptLoaderService,private datosService: DatosService,private messageService: MessageService) {         
     }    
+
     ngOnInit(){
         this.datosService.getDatosTreeProceso().then(files =>{
             this.filesTree1 = files;
+            debugger;
+        });
+
+        this.datosService.getSQL([{
+            "label":"param_nombre_proceso",
+            "value":"md01_fact_th_albaranes.kjb"
+        }]).then(res =>{
+            this.filesTree1 = res;
+            console.log("valor : ",res);
             debugger;
         });
     }
@@ -54,15 +66,17 @@ export class EtlComponent implements OnInit,AfterViewInit
             }
         });
         this._script.loadScripts('body', ['assets/app/components/m3InitPortlet.js'],true);
-        this.portletIni();
+        //this.portletIni();
     }    
     portletIni(){
         portletInitJS("m_portlet_tools_1");
         portletInitJS("m_portlet_tools_2");
     }
     onNodeSelect(event) {
-        this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
-        debugger;
+        this.nameStep = event.node.label;
+        this.textoEditor = event.node.sql;
+        // this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
+
     }
 
 }

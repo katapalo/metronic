@@ -35,6 +35,11 @@
                                                                 "label": "borrado",
                                                                 "data": "Work Folder",
                                                                 "expanded":true
+                                                            },
+                                                            {
+                                                            "label": "success",
+                                                            "data": "Work Folder",
+                                                            "expanded":true
                                                             }]
                                                         }]       
                                                 }]

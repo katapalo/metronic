@@ -42,6 +42,7 @@ export class DatosService {
   options: RequestOptions;
   //readonly url = "http://10.254.4.12:8080/api/1/";
   readonly url = "http://localhost:65413/api/1/";
+  readonly urlEtl = "http://localhost:65413/api/etl/";
   readonly urlFilter = "http://localhost:65413/api/1/filtros";
   
   constructor(private http: Http) { 
@@ -64,24 +65,23 @@ export class DatosService {
   {
     console.log("Filtros: "+this.filtros)
     
-    let body = JSON.stringify(param);
-    //let res = this.http.post(this.url+sqlId,{},this.options).subscribe(val => console.log("valor: ",val.json()));
-    //this.http.post(this.url+sqlId,{},this.options).subscribe(val => { return val; });        
-    //return this.http.post(this.url+sqlId,{},this.options);        
+    let body = JSON.stringify(param);       
     let urlApi = this.url +sqlId;
     
     let res = this.http.post(urlApi,body,this.options);
     return res;
-
-  //  this.http.post(urlApi,body,this.options).subscribe(
-  //    response => {
-  //      console.log("Respuesta: "+response.json());
-  //      },
-  //    error => console.log(error)
-  //  );
   }
 
-
+  getSQL(param:any)
+  {
+    let body = JSON.stringify(param);       
+    let urlApi = this.urlEtl + "getSQL";
+    
+    let res = this.http.post(urlApi,body,this.options);
+    
+    return res.toPromise()
+              .then(res=>res.json());
+  }
   /*
   postDatos(){
     console.log("Filtros: "+this.filtros)
