@@ -9,35 +9,7 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root',
 })
 export class DatosService {
-
-  filtros: any[] = [
-    {
-      //vacio
-    }  
-  ];
-
-  datos: any[] = [
-    {
-      "id": 1,
-      "first_name": "Sebastian",
-      "last_name": "Eschweiler",
-      "email": "sebastian@codingthesmartway.com"
-    },
-    {
-      "id": 2,
-      "first_name": "Steve",
-      "last_name": "Palmer",
-      "email": "steve@codingthesmartway.com"
-    },
-    {
-      "id": 3,
-      "first_name": "Ann",
-      "last_name": "Smith",
-      "email": "ann@codingthesmartway.com"
-    }
-  ];
-
-  datos2: any[] = [ ];
+    
   headers: Headers;
   options: RequestOptions;
   //readonly url = "http://10.254.4.12:8080/api/1/";
@@ -62,9 +34,7 @@ export class DatosService {
   }
 
   getDatos(sqlId: number, param: any): Observable<any> 
-  {
-    console.log("Filtros: "+this.filtros)
-    
+  {        
     let body = JSON.stringify(param);       
     let urlApi = this.url +sqlId;
     
@@ -72,131 +42,51 @@ export class DatosService {
     return res;
   }
 
-  getSQL(param:any)
+  getStepsJob(param:any)
   {
     let body = JSON.stringify(param);       
-    let urlApi = this.urlEtl + "getSQL";
+    let urlApi = this.urlEtl + "GetStepsJob";
+    
+    let res = this.http.post(urlApi,body,this.options);
+
+    return res.toPromise()
+              .then(res=>res.json());
+  }
+
+  executeStep(param:any)
+  {
+    let body = JSON.stringify(param);       
+    let urlApi = this.urlEtl + "executeStep";
     
     let res = this.http.post(urlApi,body,this.options);
     
     return res.toPromise()
               .then(res=>res.json());
   }
-  /*
-  postDatos(){
-    console.log("Filtros: "+this.filtros)
-    let url = "http://10.254.4.12:8080/api/1/1";
-    this.http.post(url, this.filtros).subscribe(
-      response => {
-        console.log("Respuesta: "+response.json());
-        },
-      error => console.log(error)
-    );
-  }
-  */
-  getDatos3()
-  {
-    let param = [
-      {
-        "param":"fecha_inicio",
-        "value":"2018-01-01"
-      },
-      {
-        "param":"fecha_fin",
-        "value":"2018-04-30"
-      }
-    ];
-    return this.getDatos(3,param);
-  }
-  getDatos2() {
-    return this.datos;
-  }
 
-  getDato2() {
-   // this.postDatos();
-    return this.datos2;
-  }
-
-  getDatosTest1() :any
+  getEtlTree()
   {
-    let datos = [{
-      country: "Murcia",
-      visits: 2025
-  }, {
-      country: "China",
-      visits: 1882
-  }, {
-      country: "Japan",
-      visits: 1809
-  }, {
-      country: "Brazil",
-      visits: 395
-  }];
-
-  return datos;
-  }
-
-  getDatosTest2() :any
-  {
-    let datos = [{
-      country: "Spain",
-      visits: 2025
-  }, {
-      country: "China",
-      visits: 1882
-  }, {
-      country: "Japan",
-      visits: 1809
-  }, {
-      country: "Brazil",
-      visits: 395
-  }];
-
-  return datos;
-  }
-  getDatosTest3():any
-  {
-    let datos = [
-      {
-          "des_articulo": "ruedas del tipo2",
-          "cantidad_articulos": 23.5,
-          "expenses": 18.1
-      },
-      {
-          "year": 2006,
-          "income": 26.2,
-          "expenses": 22.8
-      },
-      {
-          "year": 2007,
-          "income": 30.1,
-          "expenses": 23.9
-      },
-      {
-          "year": 2008,
-          "income": 29.5,
-          "expenses": 25.1
-      },
-      {
-          "year": 2009,
-          "income": 24.6,
-          "expenses": 25
-      }
-  ];
-  return datos;
-  }
-  getDatosTree()
-  {
-    return this.http.get('/assets/datos/datatree.json',this.options)
-                    .toPromise()
-                    .then(res => res.json().data);
+    let body = JSON.stringify("");          
+    let urlApi = this.urlEtl + "GetEtlTree";
     
+    let res = this.http.post(urlApi,body,this.options);
+
+    return res.toPromise()
+              .then(res=>res.json().data);
   }
-  getDatosTreeProceso()
-  {
-    return this.http.get('/assets/datos/datosProceso.json',this.options)
-                    .toPromise()
-                    .then(res => res.json().data);
+
+  // getDatosTree()
+  // {
+  //   return this.http.get('/assets/datos/datatree.json',this.options)
+  //                   .toPromise()
+  //                   .then(res => res.json().data);
     
-  }
+  // }
+  // getDatosTreeProceso()
+  // {
+  //   return this.http.get('/assets/datos/datosProceso.json',this.options)
+  //                   .toPromise()
+  //                   .then(res => res.json().data);
+    
+  // }
 }

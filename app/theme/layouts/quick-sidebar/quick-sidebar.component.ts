@@ -12,15 +12,16 @@ import {TreeNode} from 'primeng/api';
 export class QuickSidebarComponent implements OnInit {
 
     selectedFile3: TreeNode;
-    filesTree1: TreeNode[];
+    filesTree: TreeNode[];
 
 
     constructor(private datosService: DatosService) {
 
     }
     ngOnInit() {
-        this.datosService.getDatosTree().then(files =>{
-            this.filesTree1 = files;
+
+        this.datosService.getEtlTree().then(res=>{
+            this.filesTree = res;
         });
     }
 

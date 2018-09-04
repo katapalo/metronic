@@ -35,19 +35,12 @@ export class EtlComponent implements OnInit,AfterViewInit
     constructor(private _script: ScriptLoaderService,private datosService: DatosService,private messageService: MessageService) {         
     }    
 
-    ngOnInit(){
-        this.datosService.getDatosTreeProceso().then(files =>{
-            this.filesTree1 = files;
-            debugger;
-        });
-
-        this.datosService.getSQL([{
+    ngOnInit(){        
+        this.datosService.getStepsJob([{
             "label":"param_nombre_proceso",
             "value":"md01_fact_th_albaranes.kjb"
         }]).then(res =>{
-            this.filesTree1 = res;
-            console.log("valor : ",res);
-            debugger;
+            this.filesTree1 = res;                        
         });
     }
     
@@ -75,6 +68,11 @@ export class EtlComponent implements OnInit,AfterViewInit
     onNodeSelect(event) {
         this.nameStep = event.node.label;
         this.textoEditor = event.node.sql;
+        var param = [{
+            label:"param_query",
+            value:this.textoEditor
+        }];
+       // this.datosService.executeStep(param).then();
         // this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
 
     }
