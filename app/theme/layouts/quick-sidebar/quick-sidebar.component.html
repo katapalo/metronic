@@ -25,7 +25,7 @@
 			<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
 				<div class="m-list-settings">
 					<h3>Horizontal Tree</h3>
-					<p-tree [value]="filesTree" selectionMode="single" [(selection)]="selectedFile3" [style]="{'width':'100%'}"></p-tree>									
+					<p-tree [value]="filesTree" selectionMode="single" [(selection)]="selectedFile3" [style]="{'width':'100%'}" (onNodeSelect)="nodeSelect($event)"></p-tree>									
 				</div>
 			</div>
 			<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">

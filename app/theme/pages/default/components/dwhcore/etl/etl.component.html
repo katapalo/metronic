@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="m-portlet__body">
-					<p-organizationChart [value]="filesTree1" selectionMode="single" [(selection)]="selectedFile3" (onNodeSelect)="onNodeSelect($event)"></p-organizationChart>
+					<p-organizationChart #treeEtl [value]="filesTree" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-organizationChart>
 				</div>
 			</div>
 			<!--end::Portlet--> 

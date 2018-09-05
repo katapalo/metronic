@@ -5,11 +5,12 @@ import {EditorModule} from 'primeng/editor';
 import {TreeNode} from 'primeng/api';
 import { isProceduralRenderer } from '@angular/core/src/render3/interfaces/renderer';
 import {MessageService} from 'primeng/primeng';
+import { StateAppService } from '@app-services/state-app.service';
 
 declare function portletInitJS(id:any);
 
 @Component({
-    selector: 'app-etl',
+    selector: 'app-etl #etl',
     templateUrl: './etl.component.html',  
     // encapsulation: ViewEncapsulation.None,
     styles: [`
@@ -27,20 +28,23 @@ declare function portletInitJS(id:any);
 
 export class EtlComponent implements OnInit,AfterViewInit
 {     
-    selectedFile3: TreeNode;
-    filesTree1: TreeNode[];
+    selectedFile: TreeNode;
+    filesTree: TreeNode[];
     textoEditor:string;
     nameStep:string;
 
-    constructor(private _script: ScriptLoaderService,private datosService: DatosService,private messageService: MessageService) {         
+    constructor(private _script: ScriptLoaderService,private datosService: DatosService
+                ,private messageService: MessageService,private satateService:StateAppService) {   
+        
+        this.satateService.currentTreeNode.subscribe(message=>this.filesTree=message);
     }    
 
     ngOnInit(){        
         this.datosService.getStepsJob([{
             "label":"param_nombre_proceso",
-            "value":"md01_fact_th_albaranes.kjb"
+            "value":"th_albaranes"
         }]).then(res =>{
-            this.filesTree1 = res;                        
+            this.filesTree = res;                        
         });
     }
     

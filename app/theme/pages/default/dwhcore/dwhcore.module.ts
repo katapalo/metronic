@@ -48,7 +48,8 @@ const routes: Routes = [
     DwhcoreComponent,
     EtlComponent,
     StateComponent,    
-  ]
+  ],
+  providers:[]
 })
 export class DwhcoreModule {
 }

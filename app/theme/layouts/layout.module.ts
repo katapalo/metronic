@@ -46,7 +46,8 @@ import { TreeModule }  from 'primeng/primeng';
         CommonModule,
         RouterModule,
         TreeModule
-    ]
+    ],
+    providers:[]
 })
 export class LayoutModule {
 }
