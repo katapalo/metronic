@@ -18,6 +18,10 @@ const routes: Routes = [
                 'loadChildren': './pages/default/dwhcore/dwhcore.module#DwhcoreModule',
             },
             {
+                'path': 'admin',
+                'loadChildren': './pages/default/admin/admin.module#AdminModule',
+            },
+            {
                 'path': '',
                 'redirectTo': 'index',
                 'pathMatch': 'full',

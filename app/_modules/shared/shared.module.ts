@@ -5,7 +5,9 @@ import {SharedComponent} from './shared.component';
 
 //import {AngularMultiSelectModule, AngularMultiSelect } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
- import {ToastModule} from 'primeng/toast';
+import {ToastModule} from 'primeng/toast';
+import {TableModule} from 'primeng/table';
+
 import {
     ToolbarModule,
     ButtonModule,
@@ -46,7 +48,8 @@ import {
     TreeModule,
     EditorModule,
     OrganizationChartModule,
-    ToastModule
+    ToastModule,
+    TableModule
     ],
   providers:[
     MessageService

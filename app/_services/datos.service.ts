@@ -42,10 +42,10 @@ export class DatosService {
     return res;
   }
 
-  getStepsJob(param:any)
+  getDataNode(param:any)
   {
     let body = JSON.stringify(param);       
-    let urlApi = this.urlEtl + "GetStepsJob";
+    let urlApi = this.urlEtl + "GetDataNode";
     
     let res = this.http.post(urlApi,body,this.options);
 
@@ -73,6 +73,12 @@ export class DatosService {
 
     return res.toPromise()
               .then(res=>res.json().data);
+  }
+
+  getUsers(){
+    return this.http.get('/assets/datos/users.json',this.options)
+                    .toPromise()
+                    .then(res => res.json().data);
   }
 
   // getDatosTree()

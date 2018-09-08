@@ -40,12 +40,12 @@ export class EtlComponent implements OnInit,AfterViewInit
     }    
 
     ngOnInit(){        
-        this.datosService.getStepsJob([{
-            "label":"param_nombre_proceso",
-            "value":"th_albaranes"
-        }]).then(res =>{
-            this.filesTree = res;                        
-        });
+        // this.datosService.getDataNode([{
+        //     "label":"param_nombre_proceso",
+        //     "value":"th_albaranes"
+        // }]).then(res =>{
+        //     this.filesTree = res;                        
+        // });
     }
     
     ngAfterViewInit(){

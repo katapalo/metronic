@@ -32,13 +32,21 @@ export class QuickSidebarComponent implements OnInit {
     }
     nodeSelect(event){
         console.log(event.node.typeNodo);
-        this.datosService.getStepsJob([{
-            "label":"param_nombre_proceso",
-            "value":event.node.label
-        }]).then(res =>{            
-            this.stateService.changeTreeNode(res);  
-            debugger;   
-                          
-        });        
+        var param = [
+            {
+                "label":"param_nombre_proceso",
+                "value":event.node.label
+            },
+            {
+                "label":"param_tipo_nodo",
+                "value":event.node.typeNodo
+            }
+        ];
+        if(['dim','fact','dds','table'].find(r=>r == event.node.typeNodo))
+        {
+            this.datosService.getDataNode(param).then(res =>{            
+                this.stateService.changeTreeNode(res);                                                
+            }); 
+        }               
     }
 }

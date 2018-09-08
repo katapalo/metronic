@@ -1,0 +1,14 @@
+{
+    "data":[
+        {
+            "tipo":"Delegado",
+            "usuario":"Mariano Martinez",
+            "filtro":"cod_agente2 = 134 && cod_delegacion=1"
+        },
+        {
+            "tipo":"Jefe taller",
+            "usuario":"Jose rueda",
+            "filtro":"cod_almacen in (10,20) "
+        }
+    ]
+}
