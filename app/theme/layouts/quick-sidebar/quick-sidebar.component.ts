@@ -43,9 +43,9 @@ export class QuickSidebarComponent implements OnInit {
             }
         ];
         if(['dim','fact','dds','table'].find(r=>r == event.node.typeNodo))
-        {
+        {        
             this.datosService.getDataNode(param).then(res =>{            
-                this.stateService.changeTreeNode(res);                                                
+               this.stateService.changeTreeNode(res);                                                                
             }); 
         }               
     }

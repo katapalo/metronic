@@ -39,9 +39,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="m-portlet__body">
-					<p-organizationChart #treeEtl [value]="filesTree" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-organizationChart>
+				<div class="m-portlet__body" >
+					<p-organizationChart *ngIf="filesTree[0].typeNodo !='table'" [value]="filesTree" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-organizationChart>
+					<p-tree *ngIf="filesTree[0].typeNodo =='table'" [value]="filesTree" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-tree>				
 				</div>
+				
 			</div>
 			<!--end::Portlet--> 
 		</div>

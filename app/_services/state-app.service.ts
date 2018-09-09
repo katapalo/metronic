@@ -14,7 +14,7 @@ export class StateAppService {
   constructor() { }
 
   changeTreeNode(message: any) {
-    this.treeNode.next(message)
+    this.treeNode.next(message);  ;
   }
 
 }

@@ -81,13 +81,13 @@ export class DatosService {
                     .then(res => res.json().data);
   }
 
-  // getDatosTree()
-  // {
-  //   return this.http.get('/assets/datos/datatree.json',this.options)
-  //                   .toPromise()
-  //                   .then(res => res.json().data);
+  getDatosTree()
+  {
+    return this.http.get('/assets/datos/datatree.json',this.options)
+                    .toPromise()
+                    .then(res => res.json().data);
     
-  // }
+  }
   // getDatosTreeProceso()
   // {
   //   return this.http.get('/assets/datos/datosProceso.json',this.options)
