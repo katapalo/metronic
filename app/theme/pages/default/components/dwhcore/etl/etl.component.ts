@@ -6,7 +6,7 @@ import {TreeNode} from 'primeng/api';
 import { isProceduralRenderer } from '@angular/core/src/render3/interfaces/renderer';
 import {MessageService} from 'primeng/primeng';
 import { StateAppService } from '@app-services/state-app.service';
-import { TreeNode, TreeNode } from '@angular/router/src/utils/tree';
+
 
 
 declare function portletInitJS(id:any);
@@ -34,7 +34,9 @@ export class EtlComponent implements OnInit,AfterViewInit
     filesTree: any[];
     textoEditor:string;
     nameStep:string;
-    indTree = true;
+    nameJob:string;
+   // indTree = true;
+   
 
     constructor(private _script: ScriptLoaderService,private datosService: DatosService
                 ,private messageService: MessageService,private satateService:StateAppService) {   
@@ -76,16 +78,26 @@ export class EtlComponent implements OnInit,AfterViewInit
     }
     onNodeSelect(event) {
         this.nameStep = event.node.label;
-        this.textoEditor = event.node.sql;
-        var param = [{
-            label:"param_query",
-            value:this.textoEditor
-        }];
-        debugger;
-       
-       // this.datosService.executeStep(param).then();
-        // this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
-
+        this.textoEditor = event.node.sql;   
+        this.nameJob = event.node.nameJob;               
+    }
+    saveSql()
+    {
+        var param = [
+            {
+                label:"param_sql",
+                value:this.textoEditor
+            },
+            {
+                label:"param_label",
+                value:this.nameStep
+            },
+            {
+                label:"param_name_job",
+                value:this.nameJob
+            }
+        ];        
+        this.datosService.saveSql(param);
     }
 
 }

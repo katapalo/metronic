@@ -95,4 +95,26 @@ export class DatosService {
   //                   .then(res => res.json().data);
     
   // }
+
+  saveSql(param:any)
+  {
+    let body = JSON.stringify(param);          
+    let urlApi = this.urlEtl + "SaveSql";
+    
+    let res = this.http.post(urlApi,body,this.options);
+
+    return res.toPromise()
+              .then(res=>res.json().data);
+  }
+  saveNewTableStage(param:any)
+  {
+    let body = JSON.stringify(param);          
+    let urlApi = this.urlEtl + "SaveNewTableStage";
+    
+    let res = this.http.post(urlApi,body,this.options);
+
+    return res.toPromise()
+              .then(res=>res.json());
+  }
 }
+

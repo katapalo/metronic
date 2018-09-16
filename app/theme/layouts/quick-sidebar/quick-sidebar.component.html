@@ -11,7 +11,7 @@
 				</a>
 			</li>
 			<li class="nav-item m-tabs__item">
-				<a class="nav-link m-tabs__link" 		data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
+				<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
 					Settings
 				</a>
 			</li>
@@ -23,8 +23,37 @@
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
-				<div class="m-list-settings">
-					<h3>Horizontal Tree</h3>
+					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+							<button type="button" class="m-btn btn btn-secondary" data-toggle="modal" data-target="#m_modal_5">
+								<i class="pi pi-plus"></i>
+							</button>
+							<button type="button" class="m-btn btn btn-secondary">
+								<i class="la la-floppy-o"></i>
+							</button>
+							<button type="button" class="m-btn btn btn-secondary">
+								<i class="la la-header"></i>
+							</button>
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Dropdown
+								</button>
+								<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+									<a class="dropdown-item" href="#">
+										Dropdown link
+									</a>
+									<a class="dropdown-item" href="#">
+										Dropdown link
+									</a>
+									<a class="dropdown-item" href="#">
+										Dropdown link
+									</a>
+									<a class="dropdown-item" href="#">
+										Dropdown link
+									</a>
+								</div>
+							</div>
+						</div>
+				<div class="m-list-settings">					
 					<p-tree [value]="filesTree" selectionMode="single" [(selection)]="selectedFile3" [style]="{'width':'100%'}" (onNodeSelect)="nodeSelect($event)"></p-tree>									
 				</div>
 			</div>
@@ -432,3 +461,47 @@
 	</div>
 </div>
 <!-- end::Quick Sidebar -->
+<!--begin::Modal-->
+<div class="modal fade" #mdStage id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">
+						Nueva tabla de stage
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">
+							&times;
+						</span>
+					</button>
+				</div>
+				<form (ngSubmit)="onSubmit()" #f="ngForm">
+				<div class="modal-body">			
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label">
+							Nombre tabla:
+						</label>
+						<input type="text" class="form-control" name="name" [(ngModel)]="mdFormStage.nombre_tabla" #name="ngModel" >
+						<!-- <div *ngIf="f.submitted && name.errors.required">Name is required.</div> -->
+					</div>	
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label">
+							Descripción:
+						</label>
+						<input type="text" class="form-control" name="des_tabla" [(ngModel)]="mdFormStage.des_tabla" >
+					</div>							
+				</div>
+				<div class="modal-footer">
+					<button type="button" #btn id="btnCloseStage" class="btn btn-secondary" data-dismiss="modal">
+						Close
+					</button>
+					<button (click)="btn.click()">cerrar</button>
+					<button type="button" class="btn btn-primary" (click)="newTableStage()">
+						Aceptar
+					</button>					
+				</div>
+			</form>
+			</div>
+		</div>
+</div>
+<!--end::Modal-->

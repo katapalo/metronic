@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HrefPreventDefaultDirective } from '../../_directives/href-prevent-default.directive';
 import { UnwrapTagDirective } from '../../_directives/unwrap-tag.directive';
+import { FormsModule }   from '@angular/forms';
 
 //primeng
 import { TreeModule }  from 'primeng/primeng';
@@ -45,7 +46,8 @@ import { TreeModule }  from 'primeng/primeng';
     imports: [
         CommonModule,
         RouterModule,
-        TreeModule
+        TreeModule,
+        FormsModule
     ],
     providers:[]
 })
