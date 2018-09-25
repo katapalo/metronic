@@ -1,0 +1,454 @@
+<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
+	<li class="nav-item m-tabs__item">
+		<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
+			Messages
+		</a>
+	</li>
+	<li class="nav-item m-tabs__item">
+		<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_settings" role="tab">
+			Settings
+		</a>
+	</li>
+	<li class="nav-item m-tabs__item">
+		<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
+			Logs
+		</a>
+	</li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane active m-scrollable" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+					<button type="button" class="m-btn btn btn-secondary" data-toggle="modal" data-target="#m_modal_5">
+						<i class="pi pi-plus"></i>
+					</button>
+					<button type="button" class="m-btn btn btn-secondary">
+						<i class="la la-floppy-o"></i>
+					</button>
+					<button type="button" class="m-btn btn btn-secondary">
+						<i class="la la-header"></i>
+					</button>
+					<div class="btn-group" role="group">
+						<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Dropdown
+						</button>
+						<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+							<a class="dropdown-item" href="#">
+								Dropdown link
+							</a>
+							<a class="dropdown-item" href="#">
+								Dropdown link
+							</a>
+							<a class="dropdown-item" href="#">
+								Dropdown link
+							</a>
+							<a class="dropdown-item" href="#">
+								Dropdown link
+							</a>
+						</div>
+					</div>
+				</div>
+		<div class="m-list-settings">					
+			<p-tree [value]="filesTree" selectionMode="single" [(selection)]="selectedFile3" [style]="{'width':'100%'}" (onNodeSelect)="nodeSelect($event)"></p-tree>									
+		</div>
+	</div>
+	<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_settings" role="tabpanel">
+		<div class="m-list-settings">
+			<div class="m-list-settings__group">
+				<div class="m-list-settings__heading">
+					General Settings
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Email Notifications
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" checked="checked" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Site Tracking
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						SMS Alerts
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Backup Storage
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Audit Logs
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" checked="checked" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+			</div>
+			<div class="m-list-settings__group">
+				<div class="m-list-settings__heading">
+					System Settings
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						System Logs
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Error Reporting
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Applications Logs
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Backup Servers
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" checked="checked" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="m-list-settings__item">
+					<span class="m-list-settings__item-label">
+						Audit Logs
+					</span>
+					<span class="m-list-settings__item-control">
+						<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+							<label>
+								<input type="checkbox" name="">
+								<span></span>
+							</label>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane  m-scrollable" id="m_quick_sidebar_tabs_logs" role="tabpanel">
+		<div class="m-list-timeline">
+			<div class="m-list-timeline__group">
+				<div class="m-list-timeline__heading">
+					System Logs
+				</div>
+				<div class="m-list-timeline__items">
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							12 new users registered
+							<span class="m-badge m-badge--warning m-badge--wide">
+								important
+							</span>
+						</a>
+						<span class="m-list-timeline__time">
+							Just now
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							System shutdown
+						</a>
+						<span class="m-list-timeline__time">
+							11 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+						<a href="" class="m-list-timeline__text">
+							New invoice received
+						</a>
+						<span class="m-list-timeline__time">
+							20 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+						<a href="" class="m-list-timeline__text">
+							Database overloaded 89%
+							<span class="m-badge m-badge--success m-badge--wide">
+								resolved
+							</span>
+						</a>
+						<span class="m-list-timeline__time">
+							1 hr
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							System error
+						</a>
+						<span class="m-list-timeline__time">
+							2 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server down
+							<span class="m-badge m-badge--danger m-badge--wide">
+								pending
+							</span>
+						</a>
+						<span class="m-list-timeline__time">
+							3 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server up
+						</a>
+						<span class="m-list-timeline__time">
+							5 hrs
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="m-list-timeline__group">
+				<div class="m-list-timeline__heading">
+					Applications Logs
+				</div>
+				<div class="m-list-timeline__items">
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							New order received
+							<span class="m-badge m-badge--info m-badge--wide">
+								urgent
+							</span>
+						</a>
+						<span class="m-list-timeline__time">
+							7 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							12 new users registered
+						</a>
+						<span class="m-list-timeline__time">
+							Just now
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							System shutdown
+						</a>
+						<span class="m-list-timeline__time">
+							11 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+						<a href="" class="m-list-timeline__text">
+							New invoices received
+						</a>
+						<span class="m-list-timeline__time">
+							20 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+						<a href="" class="m-list-timeline__text">
+							Database overloaded 89%
+						</a>
+						<span class="m-list-timeline__time">
+							1 hr
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							System error
+							<span class="m-badge m-badge--info m-badge--wide">
+								pending
+							</span>
+						</a>
+						<span class="m-list-timeline__time">
+							2 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server down
+						</a>
+						<span class="m-list-timeline__time">
+							3 hrs
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="m-list-timeline__group">
+				<div class="m-list-timeline__heading">
+					Server Logs
+				</div>
+				<div class="m-list-timeline__items">
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server up
+						</a>
+						<span class="m-list-timeline__time">
+							5 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							New order received
+						</a>
+						<span class="m-list-timeline__time">
+							7 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							12 new users registered
+						</a>
+						<span class="m-list-timeline__time">
+							Just now
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							System shutdown
+						</a>
+						<span class="m-list-timeline__time">
+							11 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-danger"></span>
+						<a href="" class="m-list-timeline__text">
+							New invoice received
+						</a>
+						<span class="m-list-timeline__time">
+							20 mins
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-warning"></span>
+						<a href="" class="m-list-timeline__text">
+							Database overloaded 89%
+						</a>
+						<span class="m-list-timeline__time">
+							1 hr
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							System error
+						</a>
+						<span class="m-list-timeline__time">
+							2 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server down
+						</a>
+						<span class="m-list-timeline__time">
+							3 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-success"></span>
+						<a href="" class="m-list-timeline__text">
+							Production server up
+						</a>
+						<span class="m-list-timeline__time">
+							5 hrs
+						</span>
+					</div>
+					<div class="m-list-timeline__item">
+						<span class="m-list-timeline__badge m-list-timeline__badge--state-info"></span>
+						<a href="" class="m-list-timeline__text">
+							New order received
+						</a>
+						<span class="m-list-timeline__time">
+							1117 hrs
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

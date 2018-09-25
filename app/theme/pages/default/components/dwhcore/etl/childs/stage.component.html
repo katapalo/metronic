@@ -1,0 +1,49 @@
+	<!--begin::Portlet-->
+    <div class="m-portlet m-portlet--tabs">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-tools">
+                    <ul class="nav nav-tabs m-tabs-line m-tabs-line--primary m-tabs-line--2x" role="tablist">
+                        <li class="nav-item m-tabs__item">
+                            <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_2" role="tab">
+                                <i class="la la-briefcase"></i>
+                                Job SQL
+                            </a>
+                        </li>	
+                        <li class="nav-item m-tabs__item">
+                            <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_6_1" role="tab">
+                                <i class="la la-cog"></i>
+                                Configuración
+                            </a>
+                        </li>															
+                    </ul>							
+                </div>
+                <div class="m-portlet__head-tools">
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">							
+                            <button type="button" class="m-btn btn btn-secondary" data-toggle="modal" data-target="#m_modal_5">
+                                <i class="pi pi-plus"></i>
+                            </button>
+                            <button type="button" class="m-btn btn btn-secondary" (click)="saveSql()">
+                                <i class="la la-floppy-o"></i>
+                            </button>													
+                        </div>
+                    </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="m_tabs_6_1" role="tabpanel">     
+                        <div class="ui-g" style="width:250px;margin-bottom:10px">
+                            <div class="ui-g-12">Nombre tabla<input id="input" type="text" size="30" pInputText ></div>                               
+                            <div class="ui-g-12">Descripción<input id="input" type="text" size="30" pInputText ></div>                               
+                            <div class="ui-g-12"><p-checkbox name="group1" value="New York" label="Activa"  inputId="ny"></p-checkbox></div>
+                            <div class="ui-g-12"><p-checkbox name="group1" value="San Francisco" label="Truncate"  inputId="sf"></p-checkbox></div>                            
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="m_tabs_6_2" role="tabpanel">
+                        <textarea id="editor1" class="form-control" data-provide="markdown" rows="40"  pInputTextarea [(ngModel)]="textoEditor">
+                            ajdfjadlf dasfj adlsfj adsf
+                        </textarea>
+                    </div>                    
+                </div>
+            </div>
+    </div>
+    <!--end::Portlet-->

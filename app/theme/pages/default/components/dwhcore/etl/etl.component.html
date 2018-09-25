@@ -3,9 +3,9 @@
 	<div class="row">
 		<div class="col-lg-12">							
 			<!--begin::Portlet-->
-			<div class="m-portlet m-portlet--tab">				
+			<!-- <div class="m-portlet m-portlet--tab">				
 				<div class="m-portlet__body">
-					<p-toolbar>
+					 <p-toolbar>
 							<div class="ui-toolbar-group-left">
 								<button pButton type="button" label="New" icon="pi pi-plus"></button>
 								<button pButton type="button" label="Upload" icon="pi pi-upload" class="ui-button-success"></button>								
@@ -17,9 +17,9 @@
 								<button pButton type="button" icon="pi pi-calendar" class="ui-button-success"></button>
 								<button pButton type="button" icon="pi pi-times" class="ui-button-danger"></button>
 							</div>
-						</p-toolbar>
+					</p-toolbar> 
 				</div>				
-			</div>
+			</div> -->
 			<!--end::Portlet-->
 		</div>
 	</div>
@@ -38,6 +38,13 @@
 							</h3>
 						</div>
 					</div>
+					<div class="m-portlet__head-tools">
+						<div class="btn-group" role="group" aria-label="Button group with nested dropdown">							
+							<button type="button" class="m-btn btn btn-secondary" data-toggle="modal" data-target="#m_modal_5">
+								<i class="pi pi-plus"></i>
+							</button>																				
+						</div>
+					</div>
 				</div>
 				<div class="m-portlet__body" >
 					<p-organizationChart *ngIf="filesTree[0].typeNodo !='table'" [value]="filesTree" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="onNodeSelect($event)"></p-organizationChart>
@@ -47,35 +54,18 @@
 			</div>
 			<!--end::Portlet--> 
 		</div>
-		<div class="col-md-8">
-			<!--begin::Portlet-->
-			<div class="m-portlet">
-				<div class="m-portlet__head">
-					<div class="m-portlet__head-caption">
-						<div class="m-portlet__head-title">
-							<span class="m-portlet__head-icon m--hide">
-								<i class="la la-gear"></i>
-							</span>
-							<h3 class="m-portlet__head-text">
-								{{nameStep}}
-							</h3>							
-						</div>
-					</div>
-					<div class="m-portlet__head-tools">
-						<div class="btn-group" role="group" aria-label="Button group with nested dropdown">							
-							<button type="button" class="m-btn btn btn-secondary" (click)="saveSql()">
-								<i class="la la-floppy-o"></i>
-							</button>													
-						</div>
-					</div>
-				</div>
-				<div class="m-portlet__body">
-					<textarea id="editor1" class="form-control" data-provide="markdown" rows="40"  pInputTextarea [(ngModel)]="textoEditor">
-						ajdfjadlf dasfj adlsfj adsf
-					</textarea>
-				</div>
-			</div>
-			<!--end::Portlet--> 
-		</div>
+		<div class="col-lg-8">			
+			<!-- <etl-stage *ngIf="filesTree[0].typeNodo=='table'"></etl-stage>
+			<etl-phase *ngIf="typePhase.indexOf(filesTree[0].typeNodo) >= 0"></etl-phase>		 -->
+			<router-outlet></router-outlet>
+		</div>	
+		<app-modal #modal1 (getModel)="getModelModal($event)" [name]="'modal1'" ></app-modal>		
+		<app-modal #modal2 (getModel)="getModelModal($event)" [name]="'modal2'" ></app-modal>	
 	</div>
 </div>
+<button type="button" (click)="showModal1()">
+	open
+</button>
+<button type="button" (click)="showModal2()">
+		open
+	</button>

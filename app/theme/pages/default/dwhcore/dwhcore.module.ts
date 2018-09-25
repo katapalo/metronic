@@ -11,6 +11,9 @@ import {EtlComponent} from '@app-components/dwhcore/etl/etl.component';
 import {StateComponent} from '@app-components/dwhcore/state/state.component';
 import { MessageService } from 'primeng/api';
 
+import { StageComponent } from '@app-components/dwhcore/etl/childs/stage.component';
+import { PhaseComponent } from '@app-components/dwhcore/etl/childs/phase.component';
+import { ModalComponent } from '@app-components/modal/modal.component';
 
 
 
@@ -26,11 +29,21 @@ const routes: Routes = [
       {
         'path': 'state',
         'component': StateComponent,
-      },
+      },     
       {
         'path': 'etl',
         'component': EtlComponent,
-      },
+        'children':[
+          {
+            'path': 'stage',
+            'component': StageComponent,
+          },
+          {
+            'path': 'phase',
+            'component': PhaseComponent,
+          }
+        ]
+      }     
     ],
   },
 ];
@@ -40,14 +53,17 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
     ,LayoutModule
-    ,SharedModule
+    ,SharedModule      
   ], exports: [
-    RouterModule,    
+    RouterModule    
   ], declarations: [
     DefaultcoreComponent,
     DwhcoreComponent,
     EtlComponent,
-    StateComponent,    
+    StateComponent,  
+    StageComponent,
+    PhaseComponent,
+    ModalComponent    
   ],
   providers:[]
 })

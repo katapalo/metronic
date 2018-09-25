@@ -1,0 +1,89 @@
+<!--begin::Modal-->
+<div *ngIf="name=='modal1'" class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					Nueva tabla de stage
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<form (ngSubmit)="onSubmit()" #f="ngForm">
+			<div class="modal-body">			
+				<div class="form-group">
+					<label for="recipient-name" class="form-control-label">
+						Nombre tabla:
+					</label>
+					<input type="text" class="form-control" name="name" [(ngModel)]="model.nombre_tabla" #name="ngModel" >
+					<!-- <div *ngIf="f.submitted && name.errors.required">Name is required.</div> -->
+				</div>	
+				<div class="form-group">
+					<label for="recipient-name" class="form-control-label">
+						Descripción:
+					</label>
+					<input type="text" class="form-control" name="des_tabla" [(ngModel)]="model.des_tabla" >
+				</div>							
+			</div>
+			<div class="modal-footer">				
+				<button type="button" #btnCloseModal class="btn btn-secondary" data-dismiss="modal">
+					Cerrar
+				</button>
+				<button type="button" class="btn btn-primary" (click)="sendModel()">
+					Aceptar
+				</button>					
+			</div>
+		</form>
+		</div>
+	</div>
+	<button type="button" #btnOpenModal data-toggle="modal" data-target="#modal1"></button>
+</div>
+<!--end::Modal-->
+
+<!--begin::Modal-->
+<div *ngIf="name=='modal2'" class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					soy el mdal2					
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<form (ngSubmit)="onSubmit()" #f="ngForm">
+			<div class="modal-body">			
+				<div class="form-group">
+					<label for="recipient-name" class="form-control-label">
+						Nombre tabla:
+					</label>
+					<input type="text" class="form-control" name="name" [(ngModel)]="model.nombre_tabla" #name="ngModel" >
+					<!-- <div *ngIf="f.submitted && name.errors.required">Name is required.</div> -->
+				</div>	
+				<div class="form-group">
+					<label for="recipient-name" class="form-control-label">
+						Descripción:
+					</label>
+					<input type="text" class="form-control" name="des_tabla" [(ngModel)]="model.des_tabla" >
+				</div>							
+			</div>
+			<div class="modal-footer">
+				<button type="button" #btnCloseModal class="btn btn-secondary" data-dismiss="modal">
+					Cerrar
+				</button>
+				<button type="button" class="btn btn-primary" (click)="sendModel()">
+					Aceptar
+				</button>						
+			</div>
+		</form>
+		</div>
+	</div>
+	<button type="button" #btnOpenModal data-toggle="modal" data-target="#modal2"></button>
+</div>
+<!--end::Modal-->

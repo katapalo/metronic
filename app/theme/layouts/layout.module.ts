@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { HrefPreventDefaultDirective } from '../../_directives/href-prevent-default.directive';
 import { UnwrapTagDirective } from '../../_directives/unwrap-tag.directive';
 import { FormsModule }   from '@angular/forms';
+import { TreeSideBarComponent } from './tree-sidebar/tree-sidebar.component';
 
 //primeng
 import { TreeModule }  from 'primeng/primeng';
@@ -20,7 +21,6 @@ import { TreeModule }  from 'primeng/primeng';
 @NgModule({
     declarations: [
         LayoutComponent,
-
         HeaderNavComponent,
         DefaultComponent,
         AsideNavComponent,
@@ -30,6 +30,7 @@ import { TreeModule }  from 'primeng/primeng';
         TooltipsComponent,
         HrefPreventDefaultDirective,
         UnwrapTagDirective,
+        TreeSideBarComponent,                
     ],
     exports: [
         LayoutComponent,
@@ -47,7 +48,7 @@ import { TreeModule }  from 'primeng/primeng';
         CommonModule,
         RouterModule,
         TreeModule,
-        FormsModule
+        FormsModule        
     ],
     providers:[]
 })

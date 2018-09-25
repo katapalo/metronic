@@ -18,7 +18,9 @@ import {
     TreeModule,
     EditorModule,
     OrganizationChartModule,
-    MessageService
+    MessageService,
+    InputTextModule,
+    CheckboxModule
 } from 'primeng/primeng';
 
 
@@ -49,7 +51,9 @@ import {
     EditorModule,
     OrganizationChartModule,
     ToastModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    CheckboxModule
     ],
   providers:[
     MessageService

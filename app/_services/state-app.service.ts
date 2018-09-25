@@ -10,11 +10,11 @@ export class StateAppService {
 
   private treeNode = new BehaviorSubject<TreeNode[]>(null);
   currentTreeNode = this.treeNode.asObservable();
-
   constructor() { }
 
   changeTreeNode(message: any) {
-    this.treeNode.next(message);  ;
+    this.treeNode.next(message);  
+    debugger;
   }
 
 }

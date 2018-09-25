@@ -1,4 +1,5 @@
-import { Component,ViewEncapsulation,OnInit,AfterViewInit } from '@angular/core';
+import { Component,ViewEncapsulation,OnInit,AfterViewInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScriptLoaderService } from '@app-services/script-loader.service';
 import { DatosService } from '@app-services/datos.service';
 import {EditorModule} from 'primeng/editor';
@@ -6,7 +7,7 @@ import {TreeNode} from 'primeng/api';
 import { isProceduralRenderer } from '@angular/core/src/render3/interfaces/renderer';
 import {MessageService} from 'primeng/primeng';
 import { StateAppService } from '@app-services/state-app.service';
-
+import { ModalComponent } from '@app-components/modal/modal.component';
 
 
 declare function portletInitJS(id:any);
@@ -35,11 +36,15 @@ export class EtlComponent implements OnInit,AfterViewInit
     textoEditor:string;
     nameStep:string;
     nameJob:string;
-   // indTree = true;
-   
+    typePhase:any[]=['dim','fact','dds'];
+    
+    @ViewChild('modal1') modal1: ModalComponent;
+    @ViewChild('modal2') modal2: ModalComponent;
 
     constructor(private _script: ScriptLoaderService,private datosService: DatosService
-                ,private messageService: MessageService,private satateService:StateAppService) {   
+                ,private messageService: MessageService
+                ,private satateService:StateAppService
+                ,private router:Router) {   
         
         this.satateService.currentTreeNode.subscribe(message=>this.filesTree=message);
     }    
@@ -51,8 +56,7 @@ export class EtlComponent implements OnInit,AfterViewInit
         // }]).then(res =>{
         //     this.filesTree = res;                        
         // });
-        this.filesTree = [{typeNodo:''}];
-      console.log("longitud "+ this.filesTree.length);
+        this.filesTree = [{typeNodo:''}];             
     }
     
     ngAfterViewInit(){
@@ -79,7 +83,7 @@ export class EtlComponent implements OnInit,AfterViewInit
     onNodeSelect(event) {
         this.nameStep = event.node.label;
         this.textoEditor = event.node.sql;   
-        this.nameJob = event.node.nameJob;               
+        this.nameJob = event.node.nameJob;                    
     }
     saveSql()
     {
@@ -99,5 +103,17 @@ export class EtlComponent implements OnInit,AfterViewInit
         ];        
         this.datosService.saveSql(param);
     }
-
+    showModal1()
+    {      
+        this.modal1.showModal();
+    }
+    showModal2()
+    {      
+        this.modal2.showModal();
+    }
+    getModelModal(event)
+    {
+        console.log(event);
+        debugger;
+    }
 }
