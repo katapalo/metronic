@@ -7,7 +7,7 @@ import {TreeNode} from 'primeng/api';
 import { isProceduralRenderer } from '@angular/core/src/render3/interfaces/renderer';
 import {MessageService} from 'primeng/primeng';
 import { StateAppService } from '@app-services/state-app.service';
-import { ModalComponent } from '@app-components/modal/modal.component';
+import { ModalComponent } from '@app-modules/shared/modal/modal.component';
 
 
 declare function portletInitJS(id:any);
@@ -26,7 +26,7 @@ declare function portletInitJS(id:any);
         :host ::ng-deep .ui-splitbutton button {
             margin-right: 0;
         }
-    `]
+    `] 
 })
 
 export class EtlComponent implements OnInit,AfterViewInit
@@ -37,7 +37,8 @@ export class EtlComponent implements OnInit,AfterViewInit
     nameStep:string;
     nameJob:string;
     typePhase:any[]=['dim','fact','dds'];
-    
+    inputModel:any;
+
     @ViewChild('modal1') modal1: ModalComponent;
     @ViewChild('modal2') modal2: ModalComponent;
 
@@ -56,7 +57,8 @@ export class EtlComponent implements OnInit,AfterViewInit
         // }]).then(res =>{
         //     this.filesTree = res;                        
         // });
-        this.filesTree = [{typeNodo:''}];             
+        this.filesTree = [{typeNodo:''}];          
+        debugger;
     }
     
     ngAfterViewInit(){
@@ -103,17 +105,20 @@ export class EtlComponent implements OnInit,AfterViewInit
         ];        
         this.datosService.saveSql(param);
     }
-    showModal1()
-    {      
-        this.modal1.showModal();
-    }
-    showModal2()
-    {      
-        this.modal2.showModal();
-    }
-    getModelModal(event)
-    {
-        console.log(event);
-        debugger;
-    }
+    // showModal1()
+    // {      
+    //     this.inputModel = {
+    //         "param_nombre_tabla":"nueva_tabla"
+    //     };
+    //     this.modal1.showModal(this.inputModel);
+    // }
+    // showModal2()
+    // {      
+    //     this.modal2.showModal();
+    // }
+    // getModelModal(event)
+    // {
+    //     console.log(event);
+    //     debugger;
+    // }
 }

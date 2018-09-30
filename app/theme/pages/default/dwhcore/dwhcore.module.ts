@@ -13,7 +13,6 @@ import { MessageService } from 'primeng/api';
 
 import { StageComponent } from '@app-components/dwhcore/etl/childs/stage.component';
 import { PhaseComponent } from '@app-components/dwhcore/etl/childs/phase.component';
-import { ModalComponent } from '@app-components/modal/modal.component';
 
 
 
@@ -62,8 +61,7 @@ const routes: Routes = [
     EtlComponent,
     StateComponent,  
     StageComponent,
-    PhaseComponent,
-    ModalComponent    
+    PhaseComponent    
   ],
   providers:[]
 })

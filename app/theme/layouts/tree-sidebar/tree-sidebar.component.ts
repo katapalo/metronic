@@ -1,7 +1,9 @@
 import { Component,ViewEncapsulation,OnInit } from '@angular/core';
+//import { DOCUMENT } from '@angular/common';
 import { DatosService } from '@app-services/datos.service';
 import { Router } from '@angular/router';
 import { StateAppService } from '@app-services/state-app.service';
+import { ModalService } from '@app-services/modal.service';
 
 @Component({
     selector: 'etl-tree-sidebar',
@@ -13,26 +15,30 @@ export class TreeSideBarComponent
 {   
     filesTree: any[];
     activeNode : any = {"children":[{"estado":""}]};
-    selectedFile3: any;   
-    mdFormStage:any; 
-    mdStage:any;
+    selectedFile3: any;       
 
+    // ,@Inject(DOCUMENT) doc
     constructor(private datosService: DatosService
         ,private stateService:StateAppService
-        ,private router:Router) 
-    {
-
+        ,private router:Router
+        ,private modalService:ModalService) 
+    {        
     }
-    ngOnInit() {
+    ngOnInit() 
+    {
 
         this.datosService.getEtlTree().then(res=>{
             this.filesTree = res;
         });
-    }
+        //nos subscribimos a este evento para recibir el restulado del modal
+        this.modalService.returnModel.subscribe(res=>
+        {
+            this.activeNode.children.push(res);
+        });
+    }   
   //cuando se selecciona un nodo del arbol
     nodeSelect(event)
-    {     
-            debugger;
+    {               
         //Borramos un nodo si tiene error
         if(this.activeNode.children[0] != null && this.activeNode.children[0].estado != null &&
                 this.activeNode.children[0].estado == "error") this.activeNode.children = [];
@@ -50,8 +56,7 @@ export class TreeSideBarComponent
                 "label":"param_tipo_nodo",
                 "value":event.node.typeNodo
             }
-        ];
-        debugger;
+        ];        
         if(['dim','fact','dds','table'].find(r=>r == event.node.typeNodo))
         {        
             this.datosService.getDataNode(param).then(res =>{            
@@ -71,29 +76,17 @@ export class TreeSideBarComponent
                 break;
             }
         }                        
-    }
-
-     //formulario de nueva tabla de stage
-     newTableStage(){      
-        this.mdFormStage.nombre_proceso_carga = this.activeNode.label;
-        var param = [
-            {
-                "label":"param_modelo",
-                "value":JSON.stringify(this.mdFormStage)
-            }
-        ];        
-        this.datosService.saveNewTableStage(param).then(res =>
-        {            
-            console.log(res.data);        
-            var newNodo = {
-                "label":res.state_err == "ok" ? res.data : res.message_err,
-                "typeNodo":"table",
-                "estado":res.state_err,
-                "children":[]
-            };
-            this.activeNode.children.push(newNodo);
-            $(this.mdStage.nativeElement).modal('hide');
-           
-        });      
-    }     
+    }    
+     //formulario de nueva tabla de stage, le pasamos el nombre del proceso que la carga
+     showModal1()
+     {                            
+         var mod = {
+             "nombre_proceso_carga":this.activeNode.label
+         };                     
+         this.modalService.showModal('modal1',mod);              
+     }  
+     ngOnDestroy()
+     {                                
+        this.modalService.returnModel.unsubscribe();
+     }
 }

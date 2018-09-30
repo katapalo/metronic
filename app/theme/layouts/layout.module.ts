@@ -14,6 +14,7 @@ import { HrefPreventDefaultDirective } from '../../_directives/href-prevent-defa
 import { UnwrapTagDirective } from '../../_directives/unwrap-tag.directive';
 import { FormsModule }   from '@angular/forms';
 import { TreeSideBarComponent } from './tree-sidebar/tree-sidebar.component';
+import { SharedModule } from '@app-modules/shared/shared.module';
 
 //primeng
 import { TreeModule }  from 'primeng/primeng';
@@ -34,7 +35,6 @@ import { TreeModule }  from 'primeng/primeng';
     ],
     exports: [
         LayoutComponent,
-
         HeaderNavComponent,
         DefaultComponent,
         AsideNavComponent,
@@ -48,7 +48,8 @@ import { TreeModule }  from 'primeng/primeng';
         CommonModule,
         RouterModule,
         TreeModule,
-        FormsModule        
+        SharedModule,
+        FormsModule            
     ],
     providers:[]
 })

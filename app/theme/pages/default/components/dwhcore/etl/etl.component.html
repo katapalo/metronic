@@ -59,8 +59,7 @@
 			<etl-phase *ngIf="typePhase.indexOf(filesTree[0].typeNodo) >= 0"></etl-phase>		 -->
 			<router-outlet></router-outlet>
 		</div>	
-		<app-modal #modal1 (getModel)="getModelModal($event)" [name]="'modal1'" ></app-modal>		
-		<app-modal #modal2 (getModel)="getModelModal($event)" [name]="'modal2'" ></app-modal>	
+		<app-modal id="md1" #modal1 (getModel)="getModelModal($event)" [typeModal]="'modal1'" ></app-modal>				
 	</div>
 </div>
 <button type="button" (click)="showModal1()">

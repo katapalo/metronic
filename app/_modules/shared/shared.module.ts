@@ -2,6 +2,7 @@ import {NgModule,OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {SharedComponent} from './shared.component';
+import { ModalComponent } from './modal/modal.component';
 
 //import {AngularMultiSelectModule, AngularMultiSelect } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
@@ -26,8 +27,8 @@ import {
 
 @NgModule({
   imports: [  
-     CommonModule
-    // FormsModule,
+    CommonModule,
+    FormsModule
     // ToolbarModule,
     // AngularMultiSelectModule,
     // MultiSelectModule,
@@ -53,13 +54,15 @@ import {
     ToastModule,
     TableModule,
     InputTextModule,
-    CheckboxModule
+    CheckboxModule,
+    ModalComponent
     ],
   providers:[
     MessageService
   ],
   declarations: [
-    SharedComponent
+    SharedComponent,
+    ModalComponent
   ]
 })
 export class SharedModule implements OnInit {
